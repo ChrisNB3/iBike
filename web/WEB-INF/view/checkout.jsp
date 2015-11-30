@@ -181,11 +181,6 @@
             <li><fmt:message key="deliveryFee1"/>
                 <fmt:formatNumber type="currency" currencySymbol="&euro; " value="${initParam.deliverySurcharge}"/>
                 <fmt:message key="deliveryFee2"/></li>
-            <li><fmt:message key="discountOffer1"/>
-                ${initParam.discountNumberProducts}
-                <fmt:message key="discountOffer2"/>
-                ${initParam.discountValue}
-                <fmt:message key="discountOffer3"/></li>
         </ul>
 
         <table id="priceBox">
@@ -203,14 +198,6 @@
                         <fmt:formatNumber type="currency" currencySymbol="&euro; " value="0"/></c:if>
                 </td>
             </tr>
-            <c:if test="${!empty cart && cart.numberOfItems != 0 && cart.discount ne 0.0 }">
-                <tr>
-                    <td><fmt:message key="discount"/>:</td>
-                    <td class="checkoutPriceColumn" style="color: #f00">
-                        ${initParam.discountValue} %
-                    </td>
-                </tr>
-            </c:if>
             <tr>
                 <td class="total"><fmt:message key="total"/>:</td>
                 <td class="total checkoutPriceColumn">

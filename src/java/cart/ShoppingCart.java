@@ -20,7 +20,6 @@ public class ShoppingCart {
     int numberOfItems;
     double total;
     boolean delivery;
-    double discount; // the discount applied with the current cart
 
     public ShoppingCart() {
         items = new ArrayList<ShoppingCartItem>();
@@ -161,7 +160,7 @@ public class ShoppingCart {
      * @param surcharge the designated surcharge for all orders
      * @see ShoppingCartItem
      */
-    public synchronized void calculateTotal(String surcharge, int discountNumberProducts, double discountValue) {
+    public synchronized void calculateTotal(String surcharge) {
 
         double amount = 0;
 
@@ -171,15 +170,7 @@ public class ShoppingCart {
         amount = this.getSubtotal();
         if (delivery == true) // we only add the surchage if the client selected the delivery option
             amount += s;
-        
-        // apply discount when needed
-        if (getNumberOfItems() >= discountNumberProducts){
-            amount = amount - amount * (discountValue/100.0);
-            discount = discountValue;
-        } else {
-            discount = 0.0;
-        }
-        
+
         total = amount;
     }
 
@@ -213,14 +204,6 @@ public class ShoppingCart {
     
     public synchronized void setDelivery(boolean delivery) {
         this.delivery = delivery;
-    }
-
-    public double getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(double discount) {
-        this.discount = discount;
     }
 
 }

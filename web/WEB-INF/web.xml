@@ -14,16 +14,6 @@
         <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
         <param-value>resources.messages</param-value>
     </context-param>
-    <context-param>
-        <description>The minimum number of items you have to buy to get discount</description>
-        <param-name>discountNumberProducts</param-name>
-        <param-value>5</param-value>
-    </context-param>
-    <context-param>
-        <description>The discount value (in percentage) you get when buying at least "discountNumberProducts" items</description>
-        <param-name>discountValue</param-name>
-        <param-value>10.0</param-value>
-    </context-param>
     <session-config>
         <session-timeout>10</session-timeout>
     </session-config>
@@ -36,7 +26,7 @@
             <include-coda>/WEB-INF/jspf/footer.jspf</include-coda>
         </jsp-property-group>
     </jsp-config>
-    <!--    <resource-ref>
+<!--    <resource-ref>
         <description>Connects to database for iBike application</description>
         <res-ref-name>jdbc/ibike</res-ref-name>
         <res-type>javax.sql.ConnectionPoolDataSource</res-type>
