@@ -83,14 +83,25 @@
 
             <tr class="lightBlue"><td colspan="5" style="padding: 0 20px"><hr></td></tr>
 
-            <tr class="lightBlue">
-                <td colspan="4" id="deliverySurchargeCellLeft"><strong><fmt:message key="surcharge"/>:</strong></td>
-                <td id="deliverySurchargeCellRight">
-                    <fmt:formatNumber type="currency"
-                                      currencySymbol="&euro; "
-                                      value="${initParam.deliverySurcharge}"/></td>
-            </tr>
-
+            <c:if test="${orderRecord.delivery}">
+                <tr class="lightBlue">
+                    <td colspan="4" id="deliverySurchargeCellLeft"><strong><fmt:message key="surcharge"/>:</strong></td>
+                    <td id="deliverySurchargeCellRight">
+                        <fmt:formatNumber type="currency"
+                                          currencySymbol="&euro; "
+                                          value="${initParam.deliverySurcharge}"/></td>
+                </tr>
+            </c:if>
+                
+            <c:if test="${orderRecord.discount ne 0.0}">
+                <tr class="lightBlue">
+                    <td colspan="4" id="deliverySurchargeCellLeft"><strong><fmt:message key="discount"/>:</strong></td>
+                    <td id="deliverySurchargeCellRight" style="color: #f00">
+                        ${orderRecord.discount} %
+                    </td>
+                </tr>
+            </c:if>
+            
             <tr class="lightBlue">
                 <td colspan="4" id="totalCellLeft"><strong><fmt:message key="total"/>:</strong></td>
                 <td id="totalCellRight">

@@ -41,7 +41,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "CustomerOrder.findByAmount", query = "SELECT c FROM CustomerOrder c WHERE c.amount = :amount"),
     @NamedQuery(name = "CustomerOrder.findByDateCreated", query = "SELECT c FROM CustomerOrder c WHERE c.dateCreated = :dateCreated"),
     @NamedQuery(name = "CustomerOrder.findByConfirmationNumber", query = "SELECT c FROM CustomerOrder c WHERE c.confirmationNumber = :confirmationNumber"),
-    @NamedQuery(name = "CustomerOrder.findByDelivery", query = "SELECT c FROM CustomerOrder c WHERE c.delivery = :delivery")})
+    @NamedQuery(name = "CustomerOrder.findByDelivery", query = "SELECT c FROM CustomerOrder c WHERE c.delivery = :delivery"),
+    @NamedQuery(name = "CustomerOrder.findByDiscount", query = "SELECT c FROM CustomerOrder c WHERE c.discount = :discount")})
 public class CustomerOrder implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -63,8 +64,14 @@ public class CustomerOrder implements Serializable {
     @NotNull
     @Column(name = "confirmation_number")
     private int confirmationNumber;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "delivery")
-    private Boolean delivery;
+    private boolean delivery;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "discount")
+    private BigDecimal discount;
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Customer customerId;
@@ -79,11 +86,13 @@ public class CustomerOrder implements Serializable {
         this.id = id;
     }
 
-    public CustomerOrder(Integer id, BigDecimal amount, Date dateCreated, int confirmationNumber) {
+    public CustomerOrder(Integer id, BigDecimal amount, Date dateCreated, int confirmationNumber, boolean delivery, BigDecimal discount) {
         this.id = id;
         this.amount = amount;
         this.dateCreated = dateCreated;
         this.confirmationNumber = confirmationNumber;
+        this.delivery = delivery;
+        this.discount = discount;
     }
 
     public Integer getId() {
@@ -118,12 +127,20 @@ public class CustomerOrder implements Serializable {
         this.confirmationNumber = confirmationNumber;
     }
 
-    public Boolean getDelivery() {
+    public boolean getDelivery() {
         return delivery;
     }
 
-    public void setDelivery(Boolean delivery) {
+    public void setDelivery(boolean delivery) {
         this.delivery = delivery;
+    }
+
+    public BigDecimal getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(BigDecimal discount) {
+        this.discount = discount;
     }
 
     public Customer getCustomerId() {

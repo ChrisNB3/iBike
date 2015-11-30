@@ -47,6 +47,8 @@ import validate.Validator;
 public class ControllerServlet extends HttpServlet {
     
     private String surcharge;
+    private int discountNumberProducts;
+    private double discountValue;
 
     @EJB
     private CategoryFacade categoryFacade;
@@ -66,6 +68,8 @@ public class ControllerServlet extends HttpServlet {
 
         // initialize servlet with configuration information
         surcharge = servletConfig.getServletContext().getInitParameter("deliverySurcharge");
+        discountNumberProducts = Integer.parseInt(servletConfig.getServletContext().getInitParameter("discountNumberProducts") );
+        discountValue = Double.parseDouble(servletConfig.getServletContext().getInitParameter("discountValue") );
 
         // store category list in servlet context
         getServletContext().setAttribute("categories", categoryFacade.findAll());
@@ -133,7 +137,7 @@ public class ControllerServlet extends HttpServlet {
             ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
 
             // calculate total
-            cart.calculateTotal(surcharge);
+            cart.calculateTotal(surcharge, discountNumberProducts, discountValue);
 
             // forward to checkout page and switch to a secure channel
 
@@ -171,7 +175,7 @@ public class ControllerServlet extends HttpServlet {
             cart.setDelivery(Boolean.parseBoolean(delivery));
             
             // calculate total
-            cart.calculateTotal(surcharge);
+            cart.calculateTotal(surcharge, discountNumberProducts, discountValue);
             
             String userView = (String) session.getAttribute("view");
             
