@@ -87,8 +87,12 @@ public class OrderManager {
         // set up customer order
         CustomerOrder order = new CustomerOrder();
         order.setCustomerId(customer);
-        order.setAmount(BigDecimal.valueOf(cart.getTotal()));
-        order.setDelivery(cart.getDelivery());
+        order.setAmount(BigDecimal.valueOf(cart.getTotal()) );
+        order.setDelivery(cart.getDelivery() );
+        if (cart.getDiscount() == 0.0 )
+            order.setDiscount(BigDecimal.ZERO );
+        else order.setDiscount(BigDecimal.valueOf(cart.getDiscount()) );
+        
 
         // create confirmation number
         Random random = new Random();
