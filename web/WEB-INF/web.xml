@@ -5,37 +5,67 @@
         <param-name>productImagePath</param-name>
         <param-value>img/products/</param-value>
     </context-param>
+    
     <context-param>
         <description>The relative path to category images</description>
         <param-name>categoryImagePath</param-name>
         <param-value>img/categories/</param-value>
     </context-param>
+    
     <context-param>
         <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
         <param-value>resources.messages</param-value>
     </context-param>
+    
     <context-param>
         <description>The minimum number of items you have to buy to get discount</description>
         <param-name>discountNumberProducts</param-name>
         <param-value>5</param-value>
     </context-param>
+    
     <context-param>
         <description>The discount value (in percentage) you get when buying at least "discountNumberProducts" items</description>
         <param-name>discountValue</param-name>
         <param-value>10.0</param-value>
     </context-param>
+    
     <session-config>
         <session-timeout>10</session-timeout>
     </session-config>
+    
     <jsp-config>
         <jsp-property-group>
-            <description>header and footer settings</description>
+            <description>JSP configuration for the store front</description>
             <url-pattern>/index.jsp</url-pattern>
             <url-pattern>/WEB-INF/view/*</url-pattern>
+            <url-pattern>/WEB-INF/jspf/error/*</url-pattern>
             <include-prelude>/WEB-INF/jspf/header.jspf</include-prelude>
             <include-coda>/WEB-INF/jspf/footer.jspf</include-coda>
         </jsp-property-group>
+        <jsp-property-group>
+            <description>JSP configuration for the admin console</description>
+            <url-pattern>/admin/index.jsp</url-pattern>
+            <url-pattern>/admin/login.jsp</url-pattern>
+            <url-pattern>/admin/error.jsp</url-pattern>
+            <include-prelude>/admin/jspf/header.jspf</include-prelude>
+            <include-coda>/admin/jspf/footer.jspf</include-coda>
+        </jsp-property-group>
     </jsp-config>
+    
+    <error-page>
+        <error-code>403</error-code>
+        <location>/WEB-INF/jspf/error/403.jspf</location>
+    </error-page>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/jspf/error/404.jspf</location>
+    </error-page>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/jspf/error/500.jspf</location>
+    </error-page>
     <!--    <resource-ref>
         <description>Connects to database for iBike application</description>
         <res-ref-name>jdbc/ibike</res-ref-name>
@@ -48,4 +78,45 @@
         <param-name>deliverySurcharge</param-name>
         <param-value>5.00</param-value>
     </context-param>
+    
+    <security-constraint>
+        <display-name>Admin</display-name>
+        <web-resource-collection>
+            <web-resource-name>IBike Administration</web-resource-name>
+            <description/>
+            <url-pattern>/admin/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>iBikeAdmin</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <display-name>Checkout</display-name>
+        <web-resource-collection>
+            <web-resource-name>Checkout</web-resource-name>
+            <description/>
+            <url-pattern>/checkout</url-pattern>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+        <user-data-constraint>
+            <description/>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>file</realm-name>
+        <form-login-config>
+            <form-login-page>/admin/login.jsp</form-login-page>
+            <form-error-page>/admin/error.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
+    
+    <security-role>
+        <description/>
+        <role-name>iBikeAdmin</role-name>
+    </security-role>
 </web-app>

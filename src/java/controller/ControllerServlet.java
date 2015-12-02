@@ -327,10 +327,10 @@ public class ControllerServlet extends HttpServlet {
                         // place order details in request scope
                         request.setAttribute("customer", orderMap.get("customer"));
                         request.setAttribute("products", orderMap.get("products"));
-                        request.setAttribute("orderedProductColors", orderMap.get("orderedProductColors"));
-                        request.setAttribute("orderedProductSizes", orderMap.get("orderedProductSizes"));
                         request.setAttribute("orderRecord", orderMap.get("orderRecord"));
                         request.setAttribute("orderedProducts", orderMap.get("orderedProducts"));
+                        request.setAttribute("orderedProductColors", orderMap.get("orderedProductColors"));
+                        request.setAttribute("orderedProductSizes", orderMap.get("orderedProductSizes"));
 
                         userPath = "/confirmation";
                         

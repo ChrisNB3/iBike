@@ -92,7 +92,6 @@ public class OrderManager {
         if (cart.getDiscount() == 0.0 )
             order.setDiscount(BigDecimal.ZERO );
         else order.setDiscount(BigDecimal.valueOf(cart.getDiscount()) );
-        
 
         // create confirmation number
         Random random = new Random();
