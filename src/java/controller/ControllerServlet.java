@@ -177,21 +177,7 @@ public class ControllerServlet extends HttpServlet {
             // calculate total
             cart.calculateTotal(surcharge, discountNumberProducts, discountValue);
             
-            String userView = (String) session.getAttribute("view");
-            
-            if ((userView != null) && (!userView.equals("/index"))) { // index.jsp exists outside 'view' folder
-                                                                      // so must be forwarded separately
-                userPath = userView;
-            } else {
-            
-                // if previous view is index or cannot be determined, send user to welcome page
-                try {
-                    request.getRequestDispatcher("/index.jsp").forward(request, response);
-                } catch (Exception ex) {
-
-                }
-                return;
-            }
+            userPath = "/checkout";
         }
 
         // use RequestDispatcher to forward request internally

@@ -1,0 +1,61 @@
+--
+-- data for table `category`
+--
+
+INSERT INTO `category` (`name`) VALUES ('child');
+INSERT INTO `category` (`name`) VALUES ('woman');
+INSERT INTO `category` (`name`) VALUES ('man');
+INSERT INTO `category` (`name`) VALUES ('specialised');
+INSERT INTO `category` (`name`) VALUES ('accessories');
+
+--
+-- data for table `ordered_product_color`
+--
+
+INSERT INTO `ordered_product_color` (`name`) VALUES ('red');
+INSERT INTO `ordered_product_color` (`name`) VALUES ('green');
+INSERT INTO `ordered_product_color` (`name`) VALUES ('blue');
+INSERT INTO `ordered_product_color` (`name`) VALUES ('yellow');
+INSERT INTO `ordered_product_color` (`name`) VALUES ('purple');
+INSERT INTO `ordered_product_color` (`name`) VALUES ('grey');
+INSERT INTO `ordered_product_color` (`name`) VALUES ('black');
+
+--
+-- data for table `ordered_product_size`
+--
+
+INSERT INTO `ordered_product_size` (`name`) VALUES ('S');
+INSERT INTO `ordered_product_size` (`name`) VALUES ('M');
+INSERT INTO `ordered_product_size` (`name`) VALUES ('L');
+
+--
+-- data for table `product`
+--
+
+INSERT INTO `product` (`name`, price, description, category_id) VALUES ('tricycle', 20.00, 'perfect for babies', 1);
+INSERT INTO `product` (`name`, price, description, category_id) VALUES ('tiny wheels', 30.99, 'for beginners', 1);
+INSERT INTO `product` (`name`, price, description, category_id) VALUES ('pusher bike', 27.50, 'help your child', 1);
+INSERT INTO `product` (`name`, price, description, category_id) VALUES ('double suspension kid bicycle', 65.00, 'for those who love adventure', 1);
+INSERT INTO `product` (`name`, price, description, category_id) VALUES ('kid futuristic bicycle', 49.99, 'ahead of its time', 1);
+
+INSERT INTO `product` (`name`, price, description, category_id) VALUES ('woman standard bike', 40.00, 'our cheapest woman bike', 2);
+INSERT INTO `product` (`name`, price, description, category_id) VALUES ('woman countryside bike', 47.99, 'adapted to the countryside', 2);
+INSERT INTO `product` (`name`, price, description, category_id) VALUES ('woman city bike summer', 70.00, 'everything you need', 2);
+INSERT INTO `product` (`name`, price, description, category_id) VALUES ('woman city bike autumn', 60.00, 'classy and comfortable', 2);
+INSERT INTO `product` (`name`, price, description, category_id) VALUES ('woman sport bike', 99.99, 'high quality and performances', 2);
+
+INSERT INTO `product` (`name`, price, description, category_id) VALUES ('standard man bike', 40.00, 'for the simplest use', 3);
+INSERT INTO `product` (`name`, price, description, category_id) VALUES ('tech VTT', 85.00, 'great quality', 3);
+INSERT INTO `product` (`name`, price, description, category_id) VALUES ('tech comfort bike', 74.99, 'comfortable and furistic', 3);
+INSERT INTO `product` (`name`, price, description, category_id) VALUES ('bmx', 129.00, 'best tricks guaranteed', 3);
+
+INSERT INTO `product` (`name`, price, description, category_id) VALUES ('exercise bike', 45.00, 'make some exercise', 4);
+INSERT INTO `product` (`name`, price, description, category_id) VALUES ('folding bike', 55.00, 'really handy', 4);
+INSERT INTO `product` (`name`, price, description, category_id) VALUES ('sitting bike', 32.50, 'for those who want to feel closer from the road', 4);
+INSERT INTO `product` (`name`, price, description, category_id) VALUES ('snow bike', 62.50, 'useful in montains or when it snows', 4);
+INSERT INTO `product` (`name`, price, description, category_id) VALUES ('triangle bike', 48.00, 'our favorite - innovative bicycle', 4);
+
+INSERT INTO `product` (`name`, price, description, category_id) VALUES ('basic helmet', 9.99, 'a simple protection', 5);
+INSERT INTO `product` (`name`, price, description, category_id) VALUES ('nice helmet', 15.00, 'for advanced cyclists', 5);
+INSERT INTO `product` (`name`, price, description, category_id) VALUES ('cycling gloves', 7.99, 'will correctly protect your hands', 5);
+INSERT INTO `product` (`name`, price, description, category_id) VALUES ('water bottle', 6.50, 'any good cyclist should have one', 5);

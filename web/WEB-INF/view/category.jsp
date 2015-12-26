@@ -57,7 +57,7 @@
 
                 <td><fmt:formatNumber type="currency" currencySymbol="&euro; " value="${product.price}"/></td>
 
-                <td style="width:320px">
+                <td style="width:340px">
                     <!--<form action="addToCart" method="post">-->
                     <form action="<c:url value='addToCart'/>" method="post">
                         <select name="selectedSizeId">
